@@ -6,12 +6,11 @@ app = Flask(__name__)
 
 @app.route('/login/<username>')
 def login(username):
-    values = {}
-    values["user"] = username
+    values = "dupa"
     headers = {"Content-Type":"text/plain"}
     request = Request("http://requestb.in/1kos93j1", data=values, headers=headers)
     response_body = urlopen(request).read()
-    return response_body
+    return 'pupa'
 
 @app.route('/')
 def hello_world():
