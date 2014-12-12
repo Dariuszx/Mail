@@ -1,26 +1,21 @@
-from flask import Flask
-from urllib2 import Request, urlopen
+from flask import Flask, render_template
+import requests
+
+
 app = Flask(__name__)
 
 
+@app.route('/<values>')
+def login(values):
+    headers = {"Content-Type": "text/plain"}
+    request = Request("http://private-anon-55e0abccd-bach.apiary-proxy.com/staff/~chaberb/apps/mail/login/"+values, data=values, headers=headers)
 
-@app.route('/login/<username>')
-def login(username):
-    values = {}
-    values["user"] = username
-    headers = {"Content-Type":"text/plain"}
-    request = Request("http://requestb.in/1kos93j1", data=values, headers=headers)
     response_body = urlopen(request).read()
-    return response_body
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
+    if not response_body:
+        print "asddsa"
 
-
-def costam():
-    return 'dupa'
-
+    return render_template('login.html', msg=response_body)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, use_reloader=True)
