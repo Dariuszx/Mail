@@ -8,5 +8,9 @@ def hello_world():
     return 'Hello World!'
 
 
+def costam():
+    return 'dupa'
+
+
 if __name__ == '__main__':
     app.run()
