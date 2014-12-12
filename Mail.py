@@ -1,16 +1,18 @@
 from flask import Flask
-from urllib2 import Request, urlopen
+import requests
 app = Flask(__name__)
 
 
 
 @app.route('/login/<username>')
 def login(username):
-    values = "dupa"
-    headers = {"Content-Type":"text/plain"}
-    request = Request("http://requestb.in/1kos93j1", data=values, headers=headers)
-    response_body = urlopen(request).read()
-    return 'pupa'
+    base_path = 'http://private-anon-09c2921dd-bach.apiary-proxy.com/staff/~chaberb/apps/mail/login/'
+    val = username
+    path = base_path + username
+    headers = {"Content-Type": "text/plain"}
+    r = requests.post(path, data=val, headers=headers)
+    return r.content
+
 
 @app.route('/')
 def hello_world():
@@ -19,7 +21,5 @@ def hello_world():
 
 def costam():
     return 'dupa'
-
-
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, use_reloader=True)
