@@ -1,21 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask
 import requests
-
-
 app = Flask(__name__)
 
 
-@app.route('/<values>')
-def login(values):
+
+@app.route('/login/<username>')
+def login(username):
+    base_path = 'http://private-anon-09c2921dd-bach.apiary-proxy.com/staff/~chaberb/apps/mail/login/'
+    val = username
+    path = base_path + username
     headers = {"Content-Type": "text/plain"}
-    request = Request("http://private-anon-55e0abccd-bach.apiary-proxy.com/staff/~chaberb/apps/mail/login/"+values, data=values, headers=headers)
+    r = requests.post(path, data=val, headers=headers)
+    return r.content
 
-    response_body = urlopen(request).read()
 
-    if not response_body:
-        print "asddsa"
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
 
-    return render_template('login.html', msg=response_body)
 
+def costam():
+    return 'dupa'
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
