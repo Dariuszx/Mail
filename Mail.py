@@ -1,16 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
+
+
 app = Flask(__name__)
 
 
-
-
-
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+
+    return render_template('login.html')
 
 
-def costam():
-    return 'dupa'
+def is_logged():
+    return False
+
+
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(host='0.0.0.0', debug=True, use_reloader=True)

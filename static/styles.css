@@ -14,16 +14,18 @@ html, body {
 }
 
 #login_form {
-    background: #634c78 10% 40%;
+    background: #364571 10% 40%;
     padding: 1em;
     text-align: center;
     position: fixed;
+    color: #cbcccd;
+    font-family: sans-serif, arial;
     top: 50%;
     left: 50%;
     width: 30em;
     margin-top: -9em;
     margin-left: -15em;
     opacity: .7;
-    border: 1px solid #352940;
-    box-shadow: 0px 0px 20px #634c78;
+    border: 1px solid #4d63a1;
+    box-shadow: 0px 0px 20px #4d63a1;
 }
