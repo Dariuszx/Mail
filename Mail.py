@@ -18,7 +18,8 @@ def login():
                 return redirect(url_for('index'))
             else:
                 return render_template('login.html', error_code=4)
-
+        else:
+            return render_template('login.html', error_code=3)
     else:
         return render_template('login.html')
 
