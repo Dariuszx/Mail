@@ -26,7 +26,6 @@ def login():
 @app.route('/')
 def index():
     if 'username' in session:
-        print(session['username'])
         return render_template('user_account.html', username=session['username'])
     return render_template('login.html')
 
