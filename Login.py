@@ -1,6 +1,6 @@
 __author__ = 'dariusz'
 
-import requests, json
+import requests
 
 
 # Function to validate
@@ -12,8 +12,9 @@ def valid_login(username, password):
     path = base_path + username
     headers = {"Content-Type": "text/plain"}
     r = requests.post(path, data=val, headers=headers)
-    print r.status_code
     if r.status_code == requests.codes.ok:
-        return True
+        dict = r.json()
+        user_id = dict['user_id']
+        return True, user_id
     else:
-        return False
+        return False, None
