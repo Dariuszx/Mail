@@ -5,8 +5,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -17,11 +15,12 @@ def login():
                 session['username'] = login
                 return redirect(url_for('index'))
             else:
-                return render_template('login.html')
+                return render_template('login.html', error_code=404)
+
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+
 
 
 @app.route('/logout')

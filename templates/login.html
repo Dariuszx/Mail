@@ -13,6 +13,9 @@
     <div id="background">
 
         <div id="login_form">
+            {% if error_code == 4 %}
+                <p id="error_message"></p>
+            {% endif %}
 
             <form action="/login/" method="post">
                 <p>Login:<input type="text" name="username" /></p>
