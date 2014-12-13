@@ -11,8 +11,10 @@ def login():
         if request.form['username'] and request.form['password']:
             username = request.form['username']
             password = request.form['password']
-            if valid_login(username, password):
+            valid, user_id = valid_login(username, password)
+            if valid:
                 session['username'] = login
+                session['user_id'] = user_id
                 return redirect(url_for('index'))
             else:
                 return render_template('login.html', error_code=4)
