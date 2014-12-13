@@ -31,7 +31,7 @@ def index():
         try:
             # TODO handle messages!
             messages = receive_messages('inbox')
-            return render_template('user_account.html', username=session['username'])
+            return render_template('user_account.html', username=session['username'], messages=messages)
         except NameError as detail:
             print 'Error: ', detail
             return render_template('user_account.html', error_code=2)
