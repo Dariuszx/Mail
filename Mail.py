@@ -34,6 +34,7 @@ def index():
 @app.route('/logout')
 def logout():
     session.pop('username')
+    session.pop('user_id')
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
