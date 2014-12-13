@@ -18,10 +18,6 @@ def login():
                 return render_template('login.html', error_code=404)
 
 
-@app.route('/')
-def index():
-
-
 
 @app.route('/logout')
 def logout():
