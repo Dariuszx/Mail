@@ -15,8 +15,16 @@ def login():
                 session['username'] = login
                 return redirect(url_for('index'))
             else:
-                return render_template('login.html', error_code=404)
+                return render_template('login.html', error_code=4)
 
+    else:
+        return render_template('login.html')
+
+@app.route('/')
+def index():
+    if 'username' in session:
+        return render_template('user_account.html', username=session['username'])
+    return render_template('login.html')
 
 
 @app.route('/logout')
