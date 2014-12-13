@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-message_types = ['outbox', 'inbox']
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -37,6 +37,8 @@ def index():
             return render_template('user_account.html', error_code=2)
     else:
         return render_template('login.html')
+        return render_template('user_account.html', username=session['username'])
+    return render_template('login.html')
 
 
 def receive_messages(message_type):

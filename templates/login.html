@@ -14,19 +14,20 @@
 
         <div id="login_form">
             {% if error_code == 4 %}
-                <p id="error_message"></p>
+                <p id="error_message">Niepoprawne dane logowania</p>
             {% endif %}
 
             <form action="/login" method="post">
-                <p>Login:<input type="text" name="username" /></p>
-                <p>Password: <input type="password" name="password" /></p>
-                <input type="submit" value="Login" />
+                <p>Login:<input id="username" type="text" name="username" /></p>
+                <p>Password: <input id="password" type="password" name="password" /></p>
+                <input id="submit" type="submit" value="Sign in" />
             </form>
             
         </div>
 
     </div>
 
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
