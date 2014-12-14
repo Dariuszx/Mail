@@ -9,6 +9,7 @@ from Paths import Path
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+
 '''
 option=0 - wyswietlamy liste wiadomosci
 '''
