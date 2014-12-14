@@ -2,11 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #a1a2a5;
+    color: #eee;
 
 }
 
 #background {
-    background: #000 url("/static/images/background.jpg") no-repeat right top;
+    background: #000 url("/static/images/background_2.jpg") no-repeat right top;
     background-size: 100%;
     width: 100%;
     height: auto !important;
@@ -34,4 +36,73 @@ html, body {
 #error_message {
     color: #e01414;
     font-weight: bold;
+}
+
+#panel {
+    width: 100%;
+    font-family: sans-serif, arial;
+}
+
+#menu {
+    border-right: 1px solid #797a7c;
+    border-bottom: 1px solid #797a7c;
+    border-left: 1px solid #797a7c;
+    float:left;
+    padding: 10px;
+    width: 16%;
+    margin-left: 3%;
+    background-color: #e9eaed;
+    color: #333333;
+}
+
+#message_box {
+    float:left;
+    border-right: 1px solid #797a7c;
+    border-bottom: 1px solid #797a7c;
+    border-left: 1px solid #797a7c;
+    margin-left: 6%;
+    padding: 10px;
+    width: initial;
+    width: 65%;
+    background-color: #e9eaed;
+    color: #333333;
+}
+
+#header {
+    padding: 10px 5% 10px 10px;
+    border-bottom: 1px solid #1b316c;
+    text-align: right;
+    background-color: #3d5b99;
+    font-size: 90%;
+}
+
+#header p {
+    margin: 0px;
+    font-weight: bold;
+}
+#header span {
+    color: #b9c9e3;
+}
+
+a.link:hover {
+    color: red;
+}
+
+a.link {
+    color: #eee;
+    text-decoration: underline;
+}
+
+a.new_message {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+a.new_message:hover {
+    background-color: #3a548b;
+    padding: 5px;
+    border-radius: 5px;
 }
