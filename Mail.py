@@ -79,24 +79,32 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/new', methods=['POST', 'GET'])
+@app.route('/new', methods=['GET', 'POST'])
 def new_message():
     if request.method == 'POST':
         path = Path.send_path
-        receiver = request.form['receiver'].strip()
-        title = request.form['title'].strip()
-        content = request.form['content'].strip()
-        sender = session['user_id'].strip()
-        dict = {'content': content, 'from_user_id': sender, 'to_user_id': receiver, 'title': title}
-        headers = {"Content-Type": "application/json"}
-        dict = json.dumps(dict)
-        r = requests.post(path, data=dict, headers=headers)
-        print 'jestem'
-        if r.status_code == requests.codes.ok:
-            return render_template('user_account.html', option=3, success=1)
+        print 'MAMY'
+        if request.form['receiver'] and request.form['title'] and request.form['title']:
+            print 'sa!'
+            receiver = request.form['receiver'].strip()
+            title = request.form['title'].strip()
+            content = request.form['content'].strip()
+            sender = session['user_id'].strip()
+            print path, receiver, title, content, sender
+            dict = {'content': content, 'from_user_id': sender, 'to_user_id': receiver, 'title': title}
+            headers = {"Content-Type": "application/json"}
+            dict = json.dumps(dict)
+            r = requests.post(path, data=dict, headers=headers)
+            print 'jestem'
+            if r.status_code == requests.codes.ok:
+                return render_template('user_account.html', option=3, success=1)
+            else:
+                return render_template('user_account.html', option=3, success=0)
         else:
-            return render_template('user_account.html', option=3, success=0)
+            print 'redirect!'
+            return redirect(url_for('/new'))
     else:
+        print 'get'
         return render_template('user_account.html', option=2)
 
 
