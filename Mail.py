@@ -74,8 +74,9 @@ def receive_messages(message_type):
 
 @app.route('/logout')
 def logout():
-    session.pop('username')
-    session.pop('user_id')
+    if session:
+        session.pop('username')
+        session.pop('user_id')
     return redirect(url_for('login'))
 
 
@@ -83,26 +84,22 @@ def logout():
 def new_message():
     if request.method == 'POST':
         path = Path.send_path
-        print 'MAMY'
         if request.form['receiver'] and request.form['title'] and request.form['title']:
-            print 'sa!'
             receiver = request.form['receiver'].strip()
             title = request.form['title'].strip()
             content = request.form['content'].strip()
-            sender = session['user_id'].strip()
+            sender = str(session['user_id'])
             print path, receiver, title, content, sender
             dict = {'content': content, 'from_user_id': sender, 'to_user_id': receiver, 'title': title}
             headers = {"Content-Type": "application/json"}
             dict = json.dumps(dict)
             r = requests.post(path, data=dict, headers=headers)
-            print 'jestem'
             if r.status_code == requests.codes.ok:
                 return render_template('user_account.html', option=3, success=1)
             else:
                 return render_template('user_account.html', option=3, success=0)
         else:
-            print 'redirect!'
-            return redirect(url_for('/new'))
+            return redirect(url_for('new'))
     else:
         print 'get'
         return render_template('user_account.html', option=2)
