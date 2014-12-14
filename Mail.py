@@ -107,8 +107,8 @@ def new_message():
         return render_template('user_account.html', option=2)
 
 
-@app.route('/delete', methods=['POST'])
-def delete_message():
+@app.route('/delete/<from_path>', methods=['POST'])
+def delete_message(from_path):
     messages = request.form.getlist('messages')
     success = 1
     for message_id in messages:
@@ -118,7 +118,10 @@ def delete_message():
             continue
         else:
             success = 0
-    return redirect(url_for('/'))
+    if from_path == 0:
+        return redirect(url_for('index'))
+    else:
+        return redirect(url_for('send_messages'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, use_reloader=True)
