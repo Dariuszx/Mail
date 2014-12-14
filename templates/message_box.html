@@ -1,0 +1,16 @@
+<div id="message_box">
+
+{% if option == 0 %}
+    {% if messages.__len__ != 0 %}
+        {% for message in messages %}
+            <p>{{ message['title'] }}</p>
+        {% endfor %}
+    {% endif %}
+{% elif option == 1 %}
+
+{% elif option == 2 %}
+    {% include 'new_message.html' %}
+{% endif %}
+
+
+</div>

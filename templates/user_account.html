@@ -9,17 +9,9 @@
 </head>
 
 <body>
-
-    <div id="background">
-        <p>Zalogowano jako {{ username }}, <a href="/logout">Wyloguj się</a></p>
-
-        {% if messages.__len__ != 0 %}
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-    </div>
-
+    {% include 'header.html' %}
+    {% include 'menu.html' %}
+    {% include 'message_box.html' %}
 </body>
 
 </html>
