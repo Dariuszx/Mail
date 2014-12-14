@@ -1,0 +1,19 @@
+{% if message %}
+    <table>
+    <tr>
+        <td>Tytuł:</td><td><p id="title">{{ message['title'] }}</p></td>
+    </tr>
+    <tr>
+        <td>Nadawca:</td><td><p id="from_to">{{ message['from_username'] }}</p></td>
+    </tr>
+    <tr>
+        <td>Odbiorca:</td><td><p id="from_to">{{ message['to_username'] }}</p></td>
+    </tr>
+    <tr>
+        <td>Wiadomość:</td><td><p id="content">{{ message['content'] }}</p></td>
+    </tr>
+    </table>
+
+{% else %}
+    <p id="error_message">Błąd wyświetlania wiadomości</p>
+{% endif %}
