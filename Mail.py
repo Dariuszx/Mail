@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 from flask import Flask, session, request, redirect, url_for, render_template
 from Login import valid_login
 import requests
@@ -57,6 +59,8 @@ def receive_messages(message_type):
 @app.route('/send')
 def send_messages():
     return 'hello world'
+
+
 @app.route('/logout')
 def logout():
     session.pop('username')
