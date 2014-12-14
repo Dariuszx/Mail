@@ -106,3 +106,26 @@ a.new_message:hover {
     padding: 5px;
     border-radius: 5px;
 }
+
+a.menu {
+    color: #333333;
+    font-size: 120%;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px;
+
+}
+
+a.menu:hover {
+    border-radius: 5px;
+    background-color: #dcdee3;
+}
+
+#menu p {
+    text-align: center;
+}
+
+.warning_message {
+    font-size: 200%;
+    text-align: center;
+}

@@ -51,7 +51,7 @@ def send_messages():
         try:
             # TODO handle messages!
             messages = receive_messages('outbox')
-            return render_template('user_account.html', username=session['username'], messages=messages)
+            return render_template('user_account.html', username=session['username'], messages=messages, option=1)
         except NameError as detail:
             print 'Error: ', detail
             return render_template('user_account.html', error_code=2)

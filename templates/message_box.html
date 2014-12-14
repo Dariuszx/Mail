@@ -1,13 +1,21 @@
 <div id="message_box">
 
 {% if option == 0 %}
-    {% if messages.__len__ != 0 %}
+    {% if messages %}
         {% for message in messages %}
             <p>{{ message['title'] }}</p>
         {% endfor %}
+    {% else %}
+        <p class="warning_message">Brak wiadomości.</p>
     {% endif %}
 {% elif option == 1 %}
-
+    {% if messages%}
+        {% for message in messages %}
+            <p>{{ message['title'] }}</p>
+        {% endfor %}
+    {% else %}
+        <p class="warning_message">Brak odebranych wiadomości.</p>
+    {% endif %}
 {% elif option == 2 %}
     {% include 'new_message.html' %}
 {% endif %}
