@@ -118,7 +118,8 @@ def delete_message(from_path):
             continue
         else:
             success = 0
-    if from_path == 0:
+
+    if from_path == '0':
         return redirect(url_for('index'))
     else:
         return redirect(url_for('send_messages'))
