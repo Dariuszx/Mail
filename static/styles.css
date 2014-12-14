@@ -129,3 +129,24 @@ a.menu:hover {
     font-size: 200%;
     text-align: center;
 }
+
+#message_box p {
+    padding: 5px;
+    margin: 0px;
+    border-radius: 5px;
+    font-family: sans-serif, arial;
+}
+
+#message_box p:hover {
+    background-color: #dcdee3;
+
+}
+
+#message_box a {
+    color: #1b1b1b;
+    text-decoration: none;
+}
+
+#message_box a:hover {
+    color: #3d5b99;
+}

@@ -2,12 +2,22 @@
 
 {% if option == 0 %}
     {% if messages %}
-        <form method="post" action="">
+        <form method="post" action="/delete">
         <input type="submit" name="delete" value="Usuń zaznaczone" />
         <input type="submit" name="read" value="Oznacz jako przeczytane" />
+
         {% for message in messages %}
-            <p>{{ message['title'] }}</p>
+            <p>
+                <input type="checkbox" name="messages" value="{{ message['message_id'] }}" />
+
+                {% if message['unread'] == 1 %}
+                    <a href="/show/{{ message['message_id'] }}" class="message_list"><strong>{{ message['title'] }}</strong></a>
+                {% else %}
+                    <a href="/show/{{ message['message_id'] }}" class="message_list">{{ message['title'] }}</a>
+                {% endif %}
+    </p>
         {% endfor %}
+
         </form>
     {% else %}
         <p class="warning_message">Brak wiadomości.</p>
@@ -22,6 +32,10 @@
     {% endif %}
 {% elif option == 2 %}
     {% include 'new_message.html' %}
+{% elif option == 3 %}
+    <p class="warning_message">Wysłano wiadomość</p>
+
+
 {% endif %}
 
 

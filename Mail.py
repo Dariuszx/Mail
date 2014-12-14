@@ -45,6 +45,7 @@ def index():
     else:
         return render_template('login.html')
 
+
 @app.route('/send')
 def send_messages():
     if 'username' in session:
@@ -71,6 +72,7 @@ def receive_messages(message_type):
         return messages_of_type
     else:
         raise NameError('Could not fetch messages from server')
+
 
 @app.route('/logout')
 def logout():
@@ -103,9 +105,17 @@ def new_message():
     else:
         print 'get'
         return render_template('user_account.html', option=2)
+
+
 @app.route('/delete', methods=['POST'])
 def delete_message():
+
+    messages = request.form.getlist('messages')
+    print(messages)
+    return render_template('user_account.html', option=2)
+    '''
     message_id_table = []
+
     for message_id in message_id_table:
         path = Path.delete_path(message_id)
         r = requests.delete(path)
@@ -113,5 +123,7 @@ def delete_message():
             return render_template('user_account.html', option=4, success=1)
         else:
             return render_template('user_account.html', option=4, success=1)
+            '''
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, use_reloader=True)
