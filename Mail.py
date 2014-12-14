@@ -90,10 +90,10 @@ def new_message():
             content = request.form['content'].strip()
             sender = str(session['user_id'])
             print path, receiver, title, content, sender
-            dict = {'content': content, 'from_user_id': sender, 'to_user_id': receiver, 'title': title}
+            dict_json = {'content': content, 'from_user_id': sender, 'to_user_id': receiver, 'title': title}
             headers = {"Content-Type": "application/json"}
-            dict = json.dumps(dict)
-            r = requests.post(path, data=dict, headers=headers)
+            dict_json = json.dumps(dict_json)
+            r = requests.post(path, data=dict_json, headers=headers)
             if r.status_code == requests.codes.ok:
                 return render_template('user_account.html', option=3, success=1)
             else:
@@ -103,8 +103,15 @@ def new_message():
     else:
         print 'get'
         return render_template('user_account.html', option=2)
-
-
-
+@app.route('/delete', methods=['POST'])
+def delete_message():
+    message_id_table = []
+    for message_id in message_id_table:
+        path = Path.delete_path(message_id)
+        r = requests.delete(path)
+        if r.status_code == requests.codes.ok:
+            return render_template('user_account.html', option=4, success=1)
+        else:
+            return render_template('user_account.html', option=4, success=1)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, use_reloader=True)
