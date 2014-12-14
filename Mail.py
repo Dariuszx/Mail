@@ -76,7 +76,7 @@ def receive_messages(message_type):
 def logout():
     session.pop('username')
     session.pop('user_id')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 
 @app.route('/new', methods=['POST', 'GET'])
