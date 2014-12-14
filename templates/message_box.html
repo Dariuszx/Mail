@@ -2,9 +2,13 @@
 
 {% if option == 0 %}
     {% if messages %}
+        <form method="post" action="">
+        <input type="submit" name="delete" value="Usuń zaznaczone" />
+        <input type="submit" name="read" value="Oznacz jako przeczytane" />
         {% for message in messages %}
             <p>{{ message['title'] }}</p>
         {% endfor %}
+        </form>
     {% else %}
         <p class="warning_message">Brak wiadomości.</p>
     {% endif %}
