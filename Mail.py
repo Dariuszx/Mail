@@ -5,6 +5,7 @@ from Login import valid_login
 import requests
 import os
 import json
+from Paths import Path
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -59,10 +60,8 @@ def send_messages():
 
 
 def receive_messages(message_type):
-    base_url = 'http://private-anon-c88ec10ab-bach.apiary-proxy.com/staff/~chaberb/apps/mail/user/'
-    base_url += str(session['user_id'])
-    base_url += '/messages'
-    r = requests.get(base_url)
+    receive_url = Path.receive_path(str(session['user_id']))
+    r = requests.get(receive_url)
     if r.status_code == requests.codes.ok:
         array_of_all_messages = r.json()
         messages_of_type = []
@@ -83,7 +82,7 @@ def logout():
 @app.route('/new', methods=['POST', 'GET'])
 def new_message():
     if request.method == 'POST':
-        path = "http://private-anon-4d6b494dc-bach.apiary-proxy.com/staff/~chaberb/apps/mail/msg"
+        path = Path.send_path
         receiver = request.form['receiver'].strip()
         title = request.form['title'].strip()
         content = request.form['content'].strip()
@@ -92,6 +91,7 @@ def new_message():
         headers = {"Content-Type": "application/json"}
         dict = json.dumps(dict)
         r = requests.post(path, data=dict, headers=headers)
+        print 'jestem'
         if r.status_code == requests.codes.ok:
             return render_template('user_account.html', option=3, success=1)
         else:
