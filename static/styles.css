@@ -101,14 +101,14 @@ a.new_message {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px;
-    border-radius: 5px;
+    font-family: sans-serif, Arial;
+    padding: 5px 8px 5px 8px;
+    border-radius: 3px;
+    background: #2f477a;
 }
 
 a.new_message:hover {
-    background-color: #3a548b;
-    padding: 5px;
-    border-radius: 5px;
+    background-color: #23355b;
 }
 
 a.menu {
@@ -159,4 +159,10 @@ a.menu:hover {
     font-size: 80%;
     font-style: italic;
     padding-left: 10%;
+}
+
+#form_new_message form {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
 }

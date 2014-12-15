@@ -2,9 +2,11 @@
     <p class="warning_message">Nie można wysłać wiadomości!</p>
 {% endif %}
 
+<div id="form_new_message">
 <form method="post" action="">
-    <p>Tytuł</p> <input type="text" name="title" />
-    <p>Odbiorca</p> <input type="text" name="receiver" />
-    <p>Treść</p> <textarea name="content" cols="40", rows="10"></textarea>
+    <p>Tytuł</p> <input type="text" name="title" required="" />
+    <p>Odbiorca</p> <input type="text" name="receiver" required=""/>
+    <p>Treść</p> <textarea name="content" cols="40", rows="10" required=""></textarea>
     <br /><input type="submit" value="Wyślij" />
 </form>
+</div>
